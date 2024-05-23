@@ -35,5 +35,18 @@ def add_user(users: list) -> None:
     new_user: dict = {'name': name, 'surname': surname, 'posts': posts, 'location': location}
     users.append(new_user)
 
-add_user(data_of_users)
-read(data_of_users)
+
+# add_user(data_of_users)
+# read(data_of_users)
+def delete_user(users: list) -> None:
+    """
+    delete user from a user list
+    :param users: user list
+    :return: None
+    """
+    name: str = input("Enter name of user to remove: ")
+    for user in users:
+        if user['name'] == name:
+            users.remove(user)
+# delete_user(data_of_users)
+# read(data_of_users)
