@@ -69,5 +69,7 @@ def update_user(users: list) -> None:
             user['surname'] = new_surname
             user['posts'] = new_posts
             user['location'] = new_location
-update_user(data_of_users)
-read(data_of_users)
+
+
+# update_user(data_of_users)
+# read(data_of_users)
