@@ -1,6 +1,15 @@
 from tkinter import *
 import tkintermapview
 
+import psycopg2
+
+db_params = psycopg2.connect(
+    user="postgres", database="postgres", host="localhost", port="5432", password="geoinformatyka"
+)
+
+
+
+
 root = Tk()
 
 root.title('mapapp')
@@ -8,8 +17,7 @@ root.geometry('1024x760')
 ramka_lista_obiektow = Frame(root)
 ramka_formularz = Frame(root)
 ramka_szczegoly_obiektow = Frame(root)
-ramka_mapa = Frame(root)
-
+ramka_mapa=Frame(root)
 ramka_lista_obiektow.grid(row=0, column=0, padx=50)
 ramka_formularz.grid(row=0, column=1)
 ramka_szczegoly_obiektow.grid(row=1, column=0, columnspan=2, padx=50, pady=20)
@@ -66,27 +74,26 @@ label_szczegoly_obiektu=Label(ramka_szczegoly_obiektow, text='Szczegóły użytk
 label_name_szczegoly_obiektu = Label(ramka_szczegoly_obiektow, text ='Imię:')
 label_name_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text ='...', width=10)
 label_surnname_szczegoly_obiektu = Label(ramka_szczegoly_obiektow, text ='Nazwisko:')
-label_surnname_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text ='...', width=10)
+label_surnname_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text ='. . .', width=10)
 label_posts_szczegoly_obiektu = Label(ramka_szczegoly_obiektow, text = 'Liczba postów:')
-label_posts_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text = '...', width=10)
+label_posts_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text = '. . .', width=10)
 label_location_szczegoly_obiektu = Label(ramka_szczegoly_obiektow, text = 'Miejscowość:')
-label_location_szczegoly_obiektu_wartosc = Label(ramka_szczegoly_obiektow, text = '...', width=10)
+label_location_szczegoly_obiektu_wartość = Label(ramka_szczegoly_obiektow, text = '. . .', width=10)
 
 label_szczegoly_obiektu.grid(row=0, column=0, sticky=W)
-label_name_szczegoly_obiektu.grid(row=1, column=0)
-label_name_szczegoly_obiektu_wartosc.grid(row=1, column=1)
-label_surnname_szczegoly_obiektu.grid(row=1, column=2)
-label_surnname_szczegoly_obiektu_wartosc.grid(row=1, column=3)
-label_posts_szczegoly_obiektu.grid(row=1, column=4)
-label_posts_szczegoly_obiektu_wartosc.grid(row=1, column=5)
-label_location_szczegoly_obiektu.grid(row=1, column=6)
-label_location_szczegoly_obiektu_wartosc.grid(row=1, column=7)
+label_name_szczegoly_obiektu.grid(row=1, column=0, sticky=W)
+label_name_szczegoly_obiektu_wartosc.grid(row=1, column=1, sticky=W)
+label_surnname_szczegoly_obiektu.grid(row=1, column=2, sticky=W)
+label_surnname_szczegoly_obiektu_wartosc.grid(row=1, column=3, sticky=W)
+label_posts_szczegoly_obiektu.grid(row=1, column=4, sticky=W)
+label_posts_szczegoly_obiektu_wartosc.grid(row=1, column=5, sticky=W)
+label_location_szczegoly_obiektu.grid(row=1, column=6, sticky=W)
 
-# ramka_mapa
+#ramka_mapalabel_location_szczegoly_obiektu_wartość.grid(row=1, column=7, sticky=W)
+
 map_widget = tkintermapview.TkinterMapView(ramka_mapa, width=1050, height=400, corner_radius=0)
 map_widget.set_position(52.23, 21)  # Warsaw, Poland
 map_widget.set_zoom(5)
-
 map_widget.grid(row=0, column=0, columnspan=8)
 
 
